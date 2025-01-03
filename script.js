@@ -18,6 +18,16 @@
  //const elements = document.querySelectorAll('#input1, #input2, #input3, #input4, #input5, #input6');
 
  function copyOTP() {
-    document.getElementsByClassName('cp').select();
-    document.execCommand('copy');
+    var otp = '';
+   for (var i = 1; i <= 6; i++) {
+       otp += document.getElementById('input' + i).value;
+   }
+
+   var tempTextArea = document.createElement('textarea');
+   tempTextArea.value = otp; 
+   document.body.appendChild(tempTextArea);
+   tempTextArea.select(); 
+   document.execCommand('copy'); 
+   document.body.removeChild(tempTextArea);
+   alert('OTP copied to clipboard!');
  }
